@@ -25,11 +25,9 @@ var (
 func NewLoggerFromEnv() *zap.SugaredLogger {
 	// develop is a flag variable to switch logger mode between develop mode or not develop mode.
 	// default is not develop mode.
-	// TODO: change to get environment variable from config provider.
 	develop := strings.ToLower(strings.TrimSpace(os.Getenv("LOG_MODE"))) == "develop"
 
 	// level is a log level variable to set log level.
-	// TODO: change to get environment variable from config provider.
 	level := os.Getenv("LOG_LEVEL")
 
 	return NewLogger(develop, level)
@@ -41,7 +39,6 @@ func NewLogger(develop bool, level string) *zap.SugaredLogger {
 	// config is a configuration to use base to create logger.
 	var config zap.Config
 
-	// TODO: customize logger configuration. but now, it is just a simple configuration.
 	if develop {
 		config = zap.NewDevelopmentConfig()
 	} else {
